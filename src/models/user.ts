@@ -69,6 +69,10 @@ const user = new mongoose.Schema({
     email:{
         required: true,
         type: String
+    },
+    thumbnail:{
+        required: true,
+        type: String
     }
 });
 

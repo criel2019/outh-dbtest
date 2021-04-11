@@ -27,7 +27,7 @@ module.exports = function (app) {
     clientID: `${process.env.GOOGLE_CLIENT_ID}`,
     clientSecret: `${process.env.GOOGLE_CLIENT_SECRET}`,
     callbackURL: "/user/auth/google/callback",
-    profileFields: ['id', 'displayName', 'email']
+    profileFields: ['id', 'displayName', 'email', 'thumbnail']
   },
 
     function (_: any, __: any, profile: any, cb: any) {
@@ -41,7 +41,8 @@ module.exports = function (app) {
           const newUser = new User({
             googleId: profile.id,
             username: profile.name.givenName,
-            email: profile.emails[0].value
+            email: profile.emails[0].value,
+            thumbnail: profile._json.image.url
           });
 
           await newUser.save();

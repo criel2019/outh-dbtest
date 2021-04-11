@@ -4,6 +4,7 @@ export interface IMongoDBUser {
     naverId?: string;
     username: string;
     email: string;
+    thumbnail: string;
     __v: number;
     _id: string;
 }
