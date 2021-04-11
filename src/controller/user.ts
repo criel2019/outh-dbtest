@@ -26,7 +26,8 @@ module.exports = function (app) {
   passport.use(new GoogleStrategy({
     clientID: `${process.env.GOOGLE_CLIENT_ID}`,
     clientSecret: `${process.env.GOOGLE_CLIENT_SECRET}`,
-    callbackURL: "/user/auth/google/callback"
+    callbackURL: "/user/auth/google/callback",
+    profileFields: ['id', 'displayName', 'email']
   },
 
     function (_: any, __: any, profile: any, cb: any) {
