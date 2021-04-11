@@ -40,7 +40,7 @@ module.exports = function (app) {
           const newUser = new User({
             googleId: profile.id,
             username: profile.name.givenName,
-            email: profile.emails
+            email: profile.emails[0].value
           });
 
           await newUser.save();
