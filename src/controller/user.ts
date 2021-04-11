@@ -42,7 +42,7 @@ module.exports = function (app) {
             googleId: profile.id,
             username: profile.name.givenName,
             email: profile.emails[0].value,
-            thumbnail: profile._json.image.url
+            thumbnail: profile.photos[0].value
           });
 
           await newUser.save();
