@@ -3,6 +3,7 @@ export interface IMongoDBUser {
     kakaoId?: string;
     naverId?: string;
     username: string;
+    email: any[];
     __v: number;
     _id: string;
 }

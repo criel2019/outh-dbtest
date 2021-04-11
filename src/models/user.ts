@@ -65,6 +65,10 @@ const user = new mongoose.Schema({
     username: {
         required: true,
         type: String
+    },
+    email:{
+        required: true,
+        type: Array
     }
 });
 

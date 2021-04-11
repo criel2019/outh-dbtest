@@ -24,7 +24,7 @@ module.exports = function (passport) {
   router.get('/auth/naver/callback',
     passport.authenticate('naver', { failureRedirect: '/user/login', session: true }),
     function (req, res) {
-      res.redirect('https://criel-front.netlify.app ');
+      res.redirect('https://criel-front.netlify.app');
     });
 
   router.get("/getuser", (req, res) => {

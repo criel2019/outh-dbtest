@@ -39,7 +39,8 @@ module.exports = function (app) {
         if (!doc) {
           const newUser = new User({
             googleId: profile.id,
-            username: profile.name.givenName
+            username: profile.name.givenName,
+            email: profile.emails
           });
 
           await newUser.save();
