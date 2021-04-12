@@ -45,12 +45,6 @@ app.get("/", (req : express.Request , res : express.Response, next : express.Nex
     res.send("hello")
 })
 
-app.get("/debug", (req, res) => {
-  res.json({
-    "req.session": req.session, // 세션 데이터
-    "req.user": req.user, // 유저 데이터(뒷 부분에서 설명)
-   })
-})
 // app.use((req : express.Request , res : express.Response, next : express.NextFunction) => {
 //        const error = new Error('Not Found');
 //         res.status(404).json({
@@ -58,6 +52,26 @@ app.get("/debug", (req, res) => {
 //         });
 //  });
 app.use("/user", userRoutes)
+
+
+var MongoDBStore = require('connect-mongodb-session')(session);
+ 
+var store = new MongoDBStore({
+  uri: config.mongo.url,
+  collection: 'advist.users'
+});
+ 
+// Catch errors
+store.on('error', function(error) {
+  console.log(error);
+});
+ 
+
+ 
+app.get('/debug', function(req, res) {
+  res.send('Hello ' + JSON.stringify(req.session));
+});
+ 
 
 
 const port = process.env.PORT || 8081

@@ -38,12 +38,7 @@ module.exports = function (passport) {
   }
   
   )
-  router.get("/debug", (req, res) => {
-    res.json({
-      "req.session": req.session, // 세션 데이터
-      "req.user": req.user, // 유저 데이터(뒷 부분에서 설명)
-     })
-  })
+
 
   return router;
 }
