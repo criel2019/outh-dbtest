@@ -45,7 +45,12 @@ app.get("/", (req : express.Request , res : express.Response, next : express.Nex
     res.send("hello")
 })
 
-
+app.get("/debug", (req, res) => {
+  res.json({
+    "req.session": req.session, // 세션 데이터
+    "req.user": req.user, // 유저 데이터(뒷 부분에서 설명)
+   })
+})
 // app.use((req : express.Request , res : express.Response, next : express.NextFunction) => {
 //        const error = new Error('Not Found');
 //         res.status(404).json({
@@ -53,6 +58,7 @@ app.get("/", (req : express.Request , res : express.Response, next : express.Nex
 //         });
 //  });
 app.use("/user", userRoutes)
+
 
 const port = process.env.PORT || 8081
 app.listen(port,()=>console.log("start"+port))
