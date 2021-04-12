@@ -55,7 +55,7 @@ app.get("/", (req : express.Request , res : express.Response, next : express.Nex
 app.use("/user", userRoutes)
 
 
-var MongoDBStore = require("@types/connect-mongodb-session")(session);
+var MongoDBStore = require("connect-mongodb-session")(session);
  
 var store = new MongoDBStore({
   uri: config.mongo.url,
