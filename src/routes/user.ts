@@ -29,7 +29,7 @@ module.exports = function (passport) {
 
   router.get("/getuser", (req, res) => {
     res.send(req.user);
-    res.send(req.session);
+    console.log(req.session);
   })
 
   router.get("/auth/logout", (req, res) => {
