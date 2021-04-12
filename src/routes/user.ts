@@ -29,7 +29,6 @@ module.exports = function (passport) {
 
   router.get("/getuser", (req, res) => {
     res.send(req.user);
-    console.log(req.session);
   })
 
   router.get("/auth/logout", (req, res) => {
@@ -37,7 +36,14 @@ module.exports = function (passport) {
     req.logout();
     res.send("done");
   }
+  
   )
+  router.get("/debug", (req, res) => {
+    res.json({
+      "req.session": req.session, // 세션 데이터
+      "req.user": req.user, // 유저 데이터(뒷 부분에서 설명)
+     })
+  })
 
   return router;
 }
