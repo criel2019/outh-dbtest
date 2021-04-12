@@ -1,5 +1,5 @@
 import express from 'express'
-import mongoose, { Error } from 'mongoose';
+import mongoose, { Collection, Error } from 'mongoose';
 import dotenv from "dotenv";
 import config from './config/config'
 import cors from "cors"
@@ -55,12 +55,10 @@ app.get("/", (req : express.Request , res : express.Response, next : express.Nex
 app.use("/user", userRoutes)
 
 
-var MongoDBStore = require("connect-mongodb-session")(session);
+import ConnectMongoDBSession from "connect-mongodb-session"
  
-var store = new MongoDBStore({
-  uri: config.mongo.url,
-  collection: 'advist.users'
-});
+new ConnectMongoDBSession.MongoDBStore(uri: string;
+  collection: string; config.mongo.url,'advist.users');
  
 // Catch errors
 store.on('error', function(error) {
