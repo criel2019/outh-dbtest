@@ -73,7 +73,11 @@ const user = new mongoose.Schema({
     thumbnail:{
         required: false,
         type: String
-    }
+    },
+    name: {
+        required: false,
+        type: String
+    },
 });
 
 export default mongoose.model("User", user);

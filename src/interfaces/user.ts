@@ -5,6 +5,7 @@ export interface IMongoDBUser {
     username?: string;
     email?: string;
     thumbnail?: string;
+    name?: string;
     __v?: number;
     _id?: string;
 }
