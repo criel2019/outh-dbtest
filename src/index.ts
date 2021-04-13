@@ -31,7 +31,7 @@ app.use(
     secret: "secretcode",
     resave: true,
     saveUninitialized: true,
-    store: store,
+    // store: store,
     cookie: {
       sameSite: "none",
       secure: true,
@@ -55,15 +55,15 @@ app.get("/", (req : express.Request , res : express.Response, next : express.Nex
 app.use("/user", userRoutes)
 
 
-import ConnectMongoDBSession from "connect-mongodb-session"
+// import ConnectMongoDBSession from "connect-mongodb-session"
  
-new ConnectMongoDBSession.MongoDBStore(uri: string;
-  collection: string; config.mongo.url,'advist.users');
+// new ConnectMongoDBSession.MongoDBStore(uri: string;
+//   collection: string; config.mongo.url,'advist.users');
  
-// Catch errors
-store.on('error', function(error) {
-  console.log(error);
-});
+// // Catch errors
+// store.on('error', function(error) {
+//   console.log(error);
+// });
  
 
  
