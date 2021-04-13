@@ -105,8 +105,9 @@ module.exports = function (app) {
         if (!doc) {
           const newUser = new User({
             naverId: profile.id,
-                    email: profile.emails[0].value,
-                    username: profile.displayName,
+            username: profile.name.givenName,
+            email: profile.emails[0].value,
+            thumbnail: profile.photos[0].value
           });
 
           await newUser.save();
