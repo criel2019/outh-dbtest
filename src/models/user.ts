@@ -63,15 +63,15 @@ const user = new mongoose.Schema({
         type: String
     },
     username: {
-        required: true,
+        required: false,
         type: String
     },
     email:{
-        required: true,
+        required: false,
         type: String
     },
     thumbnail:{
-        required: true,
+        required: false,
         type: String
     }
 });
