@@ -88,7 +88,6 @@ module.exports = function (app) {
     ));
 
 
-
   passport.use(new NaverStrategy({
     clientID: `xeiJ4Etz63ZzWGd_3ODf`,
     clientSecret: `i25diPbhrQ`,
@@ -105,8 +104,10 @@ module.exports = function (app) {
         if (!doc) {
           const newUser = new User({
             naverId: profile.id,
-            username: profile.name.displayName,
+            name: profile.displayName,
             email: profile.emails[0].value,
+            username: profile.displayName,
+            provider: 'naver',
             naver: profile._json
           });
 
