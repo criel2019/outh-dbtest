@@ -75,9 +75,10 @@ module.exports = function (app) {
           if (!doc) {
             const newUser = new User({
               kakaoId: profile.id,
-              username: profile.username
+              username: profile.username,
+              email: profile.emails[0].value,
+              thumbnail: profile._json.profile_image
             });
-  
             await newUser.save();
             cb(null, newUser);
           }
