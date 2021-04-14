@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import config from './config/config'
 import cors from "cors"
 import session from 'express-session'
-import ConnectMongoDBSession from "connect-mongodb-session"
+import ConnectMongoDBSession from "@types/connect-mongodb-session"
 
 dotenv.config();
 
@@ -26,7 +26,8 @@ mongoose
 const MongoDBStore = ConnectMongoDBSession(session);
 const mongoDBStore = new MongoDBStore({
 	uri: config.mongo.url,
-	collection: "advist.users"
+  databaseName : 'advist' ,
+	collection: "users"
 });
 
 mongoDBStore.on("error", () => {
