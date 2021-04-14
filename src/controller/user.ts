@@ -76,7 +76,7 @@ module.exports = function (app) {
             const newUser = new User({
               kakaoId: profile.id,
               username: profile.username,
-              email: profile.emails[0].value,
+              email: profile.email,
               thumbnail: profile._json.profile_image
             });
             await newUser.save();
@@ -106,7 +106,7 @@ module.exports = function (app) {
           const newUser = new User({
             naverId: profile.id,
             name: profile.displayName,
-            email: profile._json.email,
+            email: profile.emails[0].value,
             username: profile.displayName,
             thumbnail: profile._json.profile_image
           });
