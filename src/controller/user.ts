@@ -59,34 +59,36 @@ module.exports = function (app) {
 
 
 
-    passport.use(new KakaoStrategy({
-      clientID: `277fa70bdd2668f91926c6f580733c2d`,
-      clientSecret: `MIzMT0MCDBgoRe1pKdZ81GRGEnNqZaEG`,
-      callbackURL: "/user/auth/kakao/callback"
-    },
-      function (_: any, __: any, profile: any, cb: any) {
-  
-        User.findOne({ kakaoId: profile.id }, async (err: Error, doc: IMongoDBUser) => {
-  
-          if (err) {
-            return cb(err, null);
-          }
-  
-          if (!doc) {
-            const newUser = new User({
-              kakaoId: profile.id,
-              username: profile.username,
-              email: profile._json.email,
-              thumbnail: profile._json.profile_image
-            });
-            await newUser.save();
-            cb(null, newUser);
-          }
-          cb(null, doc);
-        })
-  
+  passport.use(new KakaoStrategy({
+    clientID: `277fa70bdd2668f91926c6f580733c2d`,
+    clientSecret: `MIzMT0MCDBgoRe1pKdZ81GRGEnNqZaEG`,
+    callbackURL: "/user/auth/kakao/callback"
+  },
+  function (_: any, __: any, profile: any, cb: any) {
+
+    User.findOne({ kakaoId: profile.id }, async (err: Error, doc: IMongoDBUser) => {
+
+      if (err) {
+        return cb(err, null);
       }
-    ));
+
+      if (!doc) {
+        const newUser = new User({
+          kakaoId: profile.id,
+          name: profile.displayName,
+          email: profile._json.kakao_account.email,
+          username: profile.displayName,
+          thumbnail: profile._json.profile_image
+        });
+
+        await newUser.save();
+        cb(null, newUser);
+      }
+      cb(null, doc);
+    })
+
+  }
+));
 
 
   passport.use(new NaverStrategy({
