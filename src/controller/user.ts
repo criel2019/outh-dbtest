@@ -106,7 +106,7 @@ module.exports = function (app) {
           const newUser = new User({
             naverId: profile.id,
             name: profile.displayName,
-            email: profile.emails[0].value,
+            email: profile._json.email,
             username: profile.displayName,
             thumbnail: profile._json.profile_image
           });
