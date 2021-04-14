@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import config from './config/config'
 import cors from "cors"
 import session from 'express-session'
-
+import ConnectMongoDBSession from "connect-mongodb-session"
 
 dotenv.config();
 
@@ -22,6 +22,17 @@ mongoose
        console.log(error.message)
 })
 
+ 
+const MongoDBStore = ConnectMongoDBSession(session);
+const mongoDBStore = new MongoDBStore({
+	uri: config.mongo.url,
+	collection: "advist.users"
+});
+
+mongoDBStore.on("error", () => {
+	// Error's here!
+});
+
 
 app.use(cors({ origin: "https://criel-front.netlify.app", credentials: true }))
 
@@ -31,7 +42,7 @@ app.use(
     secret: "secretcode",
     resave: true,
     saveUninitialized: true,
-    // store: store,
+    store: mongoDBStore,
     cookie: {
       sameSite: "none",
       secure: true,
@@ -54,19 +65,6 @@ app.get("/", (req : express.Request , res : express.Response, next : express.Nex
 //  });
 app.use("/user", userRoutes)
 
-
-// import ConnectMongoDBSession from "connect-mongodb-session"
- 
-// new ConnectMongoDBSession.MongoDBStore(uri: string;
-//   collection: string; config.mongo.url,'advist.users');
- 
-// // Catch errors
-// store.on('error', function(error) {
-//   console.log(error);
-// });
- 
-
- 
 app.get('/debug', function(req, res) {
   res.send('Hello ' + JSON.stringify(req.session));
 });
