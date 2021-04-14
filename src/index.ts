@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import config from './config/config'
 import cors from "cors"
 import session from 'express-session'
-import ConnectMongoDBSession from "@types/connect-mongodb-session"
+import ConnectMongoDBSession from "connect-mongodb-session"
 
 dotenv.config();
 
