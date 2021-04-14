@@ -107,7 +107,7 @@ module.exports = function (app) {
             name: profile.displayName,
             email: profile.emails[0].value,
             username: profile.displayName,
-            thumbnail: profile._json.profile_image[0].value
+            thumbnail: profile._json.profile_image
           });
 
           await newUser.save();
