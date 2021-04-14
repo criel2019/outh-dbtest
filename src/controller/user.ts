@@ -107,8 +107,7 @@ module.exports = function (app) {
             name: profile.displayName,
             email: profile.emails[0].value,
             username: profile.displayName,
-            provider: 'naver',
-            naver: profile._json
+            thumbnail: profile._json.profile_image[0].value
           });
 
           await newUser.save();
