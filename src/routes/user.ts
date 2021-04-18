@@ -31,16 +31,12 @@ module.exports = function (passport) {
   router.get("/getuser", (req, res) => {
     res.send(req.user);
   })
-  router.use(cors({ origin: "https://criel-front.netlify.app", credentials: true }))
-
   router.get("/auth/logout", (req, res) => {
     req.logout()
-    res.status(200).clearCookie('connect.sid', {
-      path: '/'
-    })
     req.session.destroy(function (err) {
-      res.redirect('https://criel-front.netlify.app')
+      res.redirect('/')
     })
+    res.send('done')
   })
 
 
