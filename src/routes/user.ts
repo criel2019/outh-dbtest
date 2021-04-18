@@ -37,7 +37,7 @@ module.exports = function (passport) {
       path: '/'
     })
     req.session.destroy(function (err) {
-      res.redirect('/')
+      res.redirect('https://criel-front.netlify.app')
     })
   })
 
