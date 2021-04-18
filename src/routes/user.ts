@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors"
 var router = express.Router();
 module.exports = function (passport) {
 
@@ -30,6 +31,7 @@ module.exports = function (passport) {
   router.get("/getuser", (req, res) => {
     res.send(req.user);
   })
+  router.use(cors({ origin: "https://criel-front.netlify.app", credentials: true }))
 
   router.get("/auth/logout", (req, res) => {
     req.logout()
