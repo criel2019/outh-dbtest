@@ -33,13 +33,13 @@ module.exports = function (passport) {
 
   router.get("/auth/logout", (req, res) => {
     req.logout()
-    req.session.destroy(function (){
-      res.redirect('https://criel-front.netlify.app');      
+    res.status(200).clearCookie('connect.sid', {
+      path: '/'
     })
-    res.send('done')
-  }
-  
-  )
+    req.session.destroy(function (err) {
+      res.redirect('/')
+    })
+  })
 
 
   return router;
