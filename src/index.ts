@@ -66,10 +66,7 @@ app.get("/", (req : express.Request , res : express.Response, next : express.Nex
 //  });
 app.use("/user", userRoutes)
 
-app.get('/debug', function(req, res) {
-  res.send('Hello ' + JSON.stringify(req.session));
-});
- 
+
 
 
 const port = process.env.PORT || 8081
