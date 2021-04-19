@@ -33,8 +33,9 @@ module.exports = function (passport) {
   })
   router.get("/auth/logout", (req, res) => {
     req.session.destroy(() => {
-      res.clearCookie('connect.sid', {path: '/'})
-  }) 
+      res.clearCookie('connect.sid');
+      res.redirect('/');
+  });
   })
 
 
