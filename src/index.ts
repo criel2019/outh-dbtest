@@ -53,7 +53,7 @@ app.use(
 
 
 var passport = require('./controller/user')(app)
-var userRoutes = require('./routes/user')(passport)
+var userRoutes = require('./routes/user')(passport,app)
 app.get("/", (req : express.Request , res : express.Response, next : express.NextFunction) => {
     res.send("hello")
 })
