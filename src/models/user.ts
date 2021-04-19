@@ -62,12 +62,16 @@ const user = new mongoose.Schema({
         required: false,
         type: String
     },
+    userId: {
+        required: false,
+        type: Number
+    },
     username: {
         required: false,
         type: String
     },
     email:{
-        required: false,
+        required: true,
         type: String
     },
     thumbnail:{
@@ -78,6 +82,11 @@ const user = new mongoose.Schema({
         required: false,
         type: String
     },
+    phone: {
+        required: false,
+        type: String
+    },
+   
 });
 
 export default mongoose.model("User", user);
