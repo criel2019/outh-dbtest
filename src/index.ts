@@ -1,5 +1,5 @@
 import express from 'express'
-import mongoose, { Collection, Error } from 'mongoose';
+import mongoose from 'mongoose';
 import dotenv from "dotenv";
 import config from './config/config'
 import cors from "cors"
@@ -35,7 +35,7 @@ mongoDBStore.on("error", () => {
 });
 
 
-app.use(cors({ origin: "https://criel-front.netlify.app", credentials: true }))
+app.use(cors({ origin: "https://frontend-git-develop-advi33.vercel.app", credentials: true }))
 
 
 app.use(
@@ -52,8 +52,8 @@ app.use(
   }))
 
 
-var passport = require('./controller/user')(app)
-var userRoutes = require('./routes/user')(passport,app)
+var passport = require('./controllers/user')(app)
+var userRoutes = require('./routes/user')(passport)
 app.get("/", (req : express.Request , res : express.Response, next : express.NextFunction) => {
     res.send("hello")
 })
